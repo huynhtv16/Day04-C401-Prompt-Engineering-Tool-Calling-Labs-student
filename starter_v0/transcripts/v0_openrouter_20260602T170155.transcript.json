@@ -1,0 +1,131 @@
+{
+  "transcript_id": "v0_openrouter_20260602T170155",
+  "version": "v0",
+  "artifact_version": "v0+p52fe2834b06a+t2f9cc93c64ed",
+  "prompt_hash": "52fe2834b06a32e59789dcc3cf94febd527452021a125cb4b44ae4ee1937e505",
+  "tools_hash": "2f9cc93c64ed9aa86e94d01dca4c58c7c8f5caf87ea07609fb87967cf30eb94a",
+  "provider": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "system_prompt": "C:\\Documents\\Vin\\buoi4\\Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "C:\\Documents\\Vin\\buoi4\\Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student\\starter_v0\\artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-06-02T17:01:55",
+  "updated_at": "2026-06-02T17:02:52",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-06-02T17:02:23",
+      "user": "tôi đang thất nghiệp, làm việc gì dễ vào lương ok đay",
+      "status": "answered",
+      "assistant_text": "Hiện tại không có kết quả việc làm nào phù hợp với từ khóa \"việc làm dễ vào lương cao\". Bạn có thể thử tìm kiếm các lĩnh vực khác hoặc cập nhật từ khóa để có thêm lựa chọn.",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "job_search",
+              "args": {
+                "query": "việc làm dễ vào lương cao",
+                "limit": 5
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "job_search",
+              "args": {
+                "query": "việc làm dễ vào lương cao",
+                "limit": 5
+              },
+              "result": {
+                "tool": "search_jobs",
+                "query": "việc làm dễ vào lương cao",
+                "items": []
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Hiện tại không có kết quả việc làm nào phù hợp với từ khóa \"việc làm dễ vào lương cao\". Bạn có thể thử tìm kiếm các lĩnh vực khác hoặc cập nhật từ khóa để có thêm lựa chọn.",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "job_search",
+          "args": {
+            "query": "việc làm dễ vào lương cao",
+            "limit": 5
+          },
+          "result": {
+            "tool": "search_jobs",
+            "query": "việc làm dễ vào lương cao",
+            "items": []
+          }
+        }
+      ],
+      "ended_at": "2026-06-02T17:02:23"
+    },
+    {
+      "turn_index": 2,
+      "started_at": "2026-06-02T17:02:52",
+      "user": "Ở Vin đang có các job gì",
+      "status": "answered",
+      "assistant_text": "Hiện tại không có kết quả việc làm nào từ Vin. Bạn có thể thử tìm kiếm với từ khóa khác hoặc kiểm tra lại sau.",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "job_search",
+              "args": {
+                "query": "Vin",
+                "limit": 5
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "job_search",
+              "args": {
+                "query": "Vin",
+                "limit": 5
+              },
+              "result": {
+                "tool": "search_jobs",
+                "query": "Vin",
+                "items": []
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Hiện tại không có kết quả việc làm nào từ Vin. Bạn có thể thử tìm kiếm với từ khóa khác hoặc kiểm tra lại sau.",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "job_search",
+          "args": {
+            "query": "Vin",
+            "limit": 5
+          },
+          "result": {
+            "tool": "search_jobs",
+            "query": "Vin",
+            "items": []
+          }
+        }
+      ],
+      "ended_at": "2026-06-02T17:02:52"
+    }
+  ]
+}
