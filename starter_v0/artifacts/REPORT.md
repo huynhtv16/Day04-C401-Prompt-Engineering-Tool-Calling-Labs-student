@@ -18,7 +18,7 @@ Research agent giúp tìm thông tin nghiên cứu và tin tức từ nhiều ng
 
 **Link dùng thử (deploy):**
 
-URL: Chạy local bằng Streamlit tại `starter_v0/streamlit_app.py` hoặc deploy lên một dịch vụ web phù hợp.
+URL: chạy public trên cloudflare https://endorsed-advertiser-interpreted-reseller.trycloudflare.com/
 
 ## A2. Tool agent có
 
@@ -30,18 +30,20 @@ URL: Chạy local bằng Streamlit tại `starter_v0/streamlit_app.py` hoặc de
 | lookup | Tìm nội dung web/news theo truy vấn | không |
 | fetch | Lấy nội dung từ một URL | không |
 | format | Trình bày và định dạng nội dung đã thu thập | không |
-| send | Gửi tin nhắn Telegram ngay lập tức | không |
+| send | Gửi tin nhắn Telegram ngay lập tức | Có gửi tele khi được yêu cầu |
 | policy | Tra cứu chính sách nội bộ | không |
 | papers | Tìm bài báo khoa học | không |
+| job search | Tìm các job trên mọi web đa nền tảng như linkedIn, ..| Có |
 | paper_text | Lấy nội dung text từ bài báo | không |
 
 ## A3. Câu hỏi mẫu để thử
 
 1. "Tóm tắt 3 tweet mới nhất của Andrej Karpathy." 
-2. "Tìm tin AI tuần này và gửi bản tin ngắn lên Telegram." 
-3. "Đọc bài viết này và tóm tắt 3 ý chính: https://..." 
-4. "Tra cứu policy nội bộ về xuất bản bên ngoài và báo lại ngắn gọn." 
-5. "Tìm các bài báo AI về reinforcement learning."
+2. "Tìm các job trên mạng liên quan đến AI với mức lương from - to sau đó tổng hợp và gửi cho tôi qua telegram"
+3. "Tìm tin AI tuần này và gửi bản tin ngắn lên Telegram." 
+4. "Đọc bài viết này và tóm tắt 3 ý chính: https://..." 
+5. "Tra cứu policy nội bộ về xuất bản bên ngoài và báo lại ngắn gọn." 
+6. "Tìm các bài báo AI về reinforcement learning."
 
 ---
 
@@ -76,12 +78,14 @@ URL: Chạy local bằng Streamlit tại `starter_v0/streamlit_app.py` hoặc de
 | G08_multiturn_fill_url_then_fetch | Multiturn cung cấp URL và yêu cầu fetch | fetch url=https://openai.com/index/introducing-gpt-4-1/ | success |
 | G09_multiturn_confirm_then_send | Multiturn xác nhận gửi Telegram | send text=Ban lãnh đạo cần theo dõi sát xu hướng AI agent trong tuần này. confirmed=true | success |
 | G10_multiturn_out_of_scope_excel | Multiturn yêu cầu công thức Excel ngoài phạm vi research | no_tool refuse | success |
+| G011_direct_timeline_musk | Tìm cho tôi các job trên các nền tảng sau đó tổng hợp cho tôi | timeline screenname=job_search limit=3 | success |
 
 ## B4. Live Chat Evidence
 
 | Turn | User Request | Tool Calls | Version Evidence | Outcome |
 |---|---|---|---|---|
 | 1 | "trên twitter đang có trend gì hot" | social_search | transcripts/v2_openrouter_20260602T152120.transcript.json | Agent gọi `social_search` và trả lời danh sách trend |
+| 2 | "Tìm các job liên quan đến AI và gửi cho tô qua telegram" | job_search | transcripts/v2_openrouter_20260602T152120.transcript.json | Agent gọi `job_search` và trả lời danh sách trend |
 
 ## B5. Bonus Evidence
 
