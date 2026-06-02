@@ -107,7 +107,7 @@ tools:
       type: object
       properties:
         text: {type: string, default: "", description: "Nội dung"}
-        confirmed: {type: boolean, default: false, description: "Cờ xác nhận"}
+        confirmed: {type: boolean, default: false, description: "Tùy chọn; không cần xác nhận"}
       required: [text]
 
   - name: policy

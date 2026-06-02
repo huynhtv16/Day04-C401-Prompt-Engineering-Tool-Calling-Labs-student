@@ -1,0 +1,340 @@
+{
+  "transcript_id": "v2_openrouter_20260602T152120",
+  "version": "v2",
+  "artifact_version": "v2+p34595967e74e+t6cdb53d5d7b8",
+  "prompt_hash": "34595967e74e9b598669756068c41949ce41613c3388f080887d1d138f5ddfb6",
+  "tools_hash": "6cdb53d5d7b8de80d60b298b1357f462cedbedfae261d5ba60b08ccc401687c5",
+  "provider": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "system_prompt": "C:\\Documents\\Vin\\buoi4\\Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "C:\\Documents\\Vin\\buoi4\\Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student\\starter_v0\\artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-06-02T15:21:20",
+  "updated_at": "2026-06-02T15:22:44",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-06-02T15:21:32",
+      "user": "trên twitter đang có trend gì hot ",
+      "status": "answered",
+      "assistant_text": "Here are some of the current trending topics on Twitter:\n\n1. **In America, people are laughing at what happened**: A humorous incident involving a man accused of being a drug user who threatened to cut off the electricity to a restaurant. [Read more](https://x.com/MOSCOW_EN/status/2061411764554862672) - @MOSCOW_EN\n\n2. **Prince William Defuses Trump's Royal Humiliation**: Reports suggest Prince William intervened during a tense moment with Donald Trump. [Read more](https://x.com/ViralWavesX/status/2061413914748109227) - @ViralWavesX\n\n3. **Bollywood Glamour**: Sara Ali Khan and Rakul Preet Singh spotted together, showcasing their glamorous looks. [Read more](https://x.com/aajtak/status/2061003535442210825) - @aajtak\n\n4. **JuJu Smith-Schuster's Viral TikTok**: A TikTok video of the Giants' wide receiver has resurfaced and gone viral again. [Read more](https://x.com/MLFootball/status/2061513642760110582) - @MLFootball\n\n5. **Monkey Snatches Bag in Court**: A monkey stole a bag containing ₹2 lakh in a Bulandshahr court and threw the notes from a tree. [Read more](https://x.com/business_today/status/2061287444658716938) - @business_today\n\nThese topics are generating significant attention and engagement on social media.",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "social_search",
+              "args": {
+                "query": "trending",
+                "search_type": "Top",
+                "limit": 5
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "social_search",
+              "args": {
+                "query": "trending",
+                "search_type": "Top",
+                "limit": 5
+              },
+              "result": {
+                "tool": "search_tweets",
+                "query": "trending",
+                "search_type": "Top",
+                "items": [
+                  {
+                    "title": "Trending: In America, people are laughing at what happened. At first, ",
+                    "summary": "Trending: In America, people are laughing at what happened. At first, \nhttps://t.co/IxzgbRkvif\n\nthe restaurant owners accused the man of being a drug user, so he got angry and replied: \"A drug user? I'm an electrician!! I'm going to go out right now and cut off the electricity to this whole place…\"\n\nThe woman: \"I bet you won't do it.\"\n\nThen he went out, and this is what happened.",
+                    "url": "https://x.com/MOSCOW_EN/status/2061411764554862672",
+                    "source": "@MOSCOW_EN",
+                    "date": "Mon Jun 01 11:37:18 +0000 2026",
+                    "metrics": {
+                      "favorites": 8,
+                      "retweets": 3,
+                      "views": "959"
+                    }
+                  },
+                  {
+                    "title": "Prince William Defuses Trump's Royal",
+                    "summary": "Prince William Defuses Trump's Royal\nHumiliation by Confronting Donald Trump Prince William and Donald Trump are trending after reports of a tense royal moment where William allegedly stepped in to defuse Trump's humiliation during a high-profile encounter. https://t.co/EmjXGwC4TJ",
+                    "url": "https://x.com/ViralWavesX/status/2061413914748109227",
+                    "source": "@ViralWavesX",
+                    "date": "Mon Jun 01 11:45:51 +0000 2026",
+                    "metrics": {
+                      "favorites": 1000,
+                      "retweets": 109,
+                      "views": "522733"
+                    }
+                  },
+                  {
+                    "title": "Bollywood: साथ स्पॉट हुईं सारा अली खान और रकुल प्रीत सिंह, दिखा ग्लैमरस अंदाज़ ",
+                    "summary": "Bollywood: साथ स्पॉट हुईं सारा अली खान और रकुल प्रीत सिंह, दिखा ग्लैमरस अंदाज़ \n\n#Bollywood #viral #shorts #trending #ATShorts https://t.co/rwCDcY59Aq",
+                    "url": "https://x.com/aajtak/status/2061003535442210825",
+                    "source": "@aajtak",
+                    "date": "Sun May 31 08:35:09 +0000 2026",
+                    "metrics": {
+                      "favorites": 19,
+                      "retweets": 0,
+                      "views": "3254"
+                    }
+                  },
+                  {
+                    "title": "TRENDING: #Giants free-agent signing wide receiver JuJu Smith-Schuster's TikTok video has resurfaced and gone viral agai",
+                    "summary": "TRENDING: #Giants free-agent signing wide receiver JuJu Smith-Schuster's TikTok video has resurfaced and gone viral again on social media.\n\nJuJu is one of one.\n\n💀💀💀 https://t.co/GiojZsRHRP",
+                    "url": "https://x.com/MLFootball/status/2061513642760110582",
+                    "source": "@MLFootball",
+                    "date": "Mon Jun 01 18:22:08 +0000 2026",
+                    "metrics": {
+                      "favorites": 132,
+                      "retweets": 5,
+                      "views": "64057"
+                    }
+                  },
+                  {
+                    "title": "Monkey Snatches ₹2 Lakh Bag In Bulandshahr Court, Throws Notes From Tree",
+                    "summary": "Monkey Snatches ₹2 Lakh Bag In Bulandshahr Court, Throws Notes From Tree\n\n#Bulandshahr #Monkey #ViralVideo #UttarPradesh #MonkeyViral #CourtNews #IndiaNews #BreakingNews #ViralNews #Trending https://t.co/R78YHArIUw",
+                    "url": "https://x.com/business_today/status/2061287444658716938",
+                    "source": "@business_today",
+                    "date": "Mon Jun 01 03:23:18 +0000 2026",
+                    "metrics": {
+                      "favorites": 5,
+                      "retweets": 0,
+                      "views": "1607"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Here are some of the current trending topics on Twitter:\n\n1. **In America, people are laughing at what happened**: A humorous incident involving a man accused of being a drug user who threatened to cut off the electricity to a restaurant. [Read more](https://x.com/MOSCOW_EN/status/2061411764554862672) - @MOSCOW_EN\n\n2. **Prince William Defuses Trump's Royal Humiliation**: Reports suggest Prince William intervened during a tense moment with Donald Trump. [Read more](https://x.com/ViralWavesX/status/2061413914748109227) - @ViralWavesX\n\n3. **Bollywood Glamour**: Sara Ali Khan and Rakul Preet Singh spotted together, showcasing their glamorous looks. [Read more](https://x.com/aajtak/status/2061003535442210825) - @aajtak\n\n4. **JuJu Smith-Schuster's Viral TikTok**: A TikTok video of the Giants' wide receiver has resurfaced and gone viral again. [Read more](https://x.com/MLFootball/status/2061513642760110582) - @MLFootball\n\n5. **Monkey Snatches Bag in Court**: A monkey stole a bag containing ₹2 lakh in a Bulandshahr court and threw the notes from a tree. [Read more](https://x.com/business_today/status/2061287444658716938) - @business_today\n\nThese topics are generating significant attention and engagement on social media.",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "social_search",
+          "args": {
+            "query": "trending",
+            "search_type": "Top",
+            "limit": 5
+          },
+          "result": {
+            "tool": "search_tweets",
+            "query": "trending",
+            "search_type": "Top",
+            "items": [
+              {
+                "title": "Trending: In America, people are laughing at what happened. At first, ",
+                "summary": "Trending: In America, people are laughing at what happened. At first, \nhttps://t.co/IxzgbRkvif\n\nthe restaurant owners accused the man of being a drug user, so he got angry and replied: \"A drug user? I'm an electrician!! I'm going to go out right now and cut off the electricity to this whole place…\"\n\nThe woman: \"I bet you won't do it.\"\n\nThen he went out, and this is what happened.",
+                "url": "https://x.com/MOSCOW_EN/status/2061411764554862672",
+                "source": "@MOSCOW_EN",
+                "date": "Mon Jun 01 11:37:18 +0000 2026",
+                "metrics": {
+                  "favorites": 8,
+                  "retweets": 3,
+                  "views": "959"
+                }
+              },
+              {
+                "title": "Prince William Defuses Trump's Royal",
+                "summary": "Prince William Defuses Trump's Royal\nHumiliation by Confronting Donald Trump Prince William and Donald Trump are trending after reports of a tense royal moment where William allegedly stepped in to defuse Trump's humiliation during a high-profile encounter. https://t.co/EmjXGwC4TJ",
+                "url": "https://x.com/ViralWavesX/status/2061413914748109227",
+                "source": "@ViralWavesX",
+                "date": "Mon Jun 01 11:45:51 +0000 2026",
+                "metrics": {
+                  "favorites": 1000,
+                  "retweets": 109,
+                  "views": "522733"
+                }
+              },
+              {
+                "title": "Bollywood: साथ स्पॉट हुईं सारा अली खान और रकुल प्रीत सिंह, दिखा ग्लैमरस अंदाज़ ",
+                "summary": "Bollywood: साथ स्पॉट हुईं सारा अली खान और रकुल प्रीत सिंह, दिखा ग्लैमरस अंदाज़ \n\n#Bollywood #viral #shorts #trending #ATShorts https://t.co/rwCDcY59Aq",
+                "url": "https://x.com/aajtak/status/2061003535442210825",
+                "source": "@aajtak",
+                "date": "Sun May 31 08:35:09 +0000 2026",
+                "metrics": {
+                  "favorites": 19,
+                  "retweets": 0,
+                  "views": "3254"
+                }
+              },
+              {
+                "title": "TRENDING: #Giants free-agent signing wide receiver JuJu Smith-Schuster's TikTok video has resurfaced and gone viral agai",
+                "summary": "TRENDING: #Giants free-agent signing wide receiver JuJu Smith-Schuster's TikTok video has resurfaced and gone viral again on social media.\n\nJuJu is one of one.\n\n💀💀💀 https://t.co/GiojZsRHRP",
+                "url": "https://x.com/MLFootball/status/2061513642760110582",
+                "source": "@MLFootball",
+                "date": "Mon Jun 01 18:22:08 +0000 2026",
+                "metrics": {
+                  "favorites": 132,
+                  "retweets": 5,
+                  "views": "64057"
+                }
+              },
+              {
+                "title": "Monkey Snatches ₹2 Lakh Bag In Bulandshahr Court, Throws Notes From Tree",
+                "summary": "Monkey Snatches ₹2 Lakh Bag In Bulandshahr Court, Throws Notes From Tree\n\n#Bulandshahr #Monkey #ViralVideo #UttarPradesh #MonkeyViral #CourtNews #IndiaNews #BreakingNews #ViralNews #Trending https://t.co/R78YHArIUw",
+                "url": "https://x.com/business_today/status/2061287444658716938",
+                "source": "@business_today",
+                "date": "Mon Jun 01 03:23:18 +0000 2026",
+                "metrics": {
+                  "favorites": 5,
+                  "retweets": 0,
+                  "views": "1607"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "ended_at": "2026-06-02T15:21:32"
+    },
+    {
+      "turn_index": 2,
+      "started_at": "2026-06-02T15:22:44",
+      "user": "bệnh viện gần đây",
+      "status": "answered",
+      "assistant_text": "Here are some recent resources related to hospitals:\n\n1. **Bệnh viện Trung ương Quân đội 108**: This hospital has made significant advancements in organ transplants, completing over 700 kidney transplants in the past decade. More information can be found on their official site: [benhvien108.vn](https://benhvien108.vn/home.htm).\n\n2. **Bệnh Viện Đa Khoa Quốc Tế Saigon**: Information on how to reach this hospital in District 1, Ho Chi Minh City, is available here: [Moovit](https://moovitapp.com/index/vi/ph%C6%B0%C6%A1ng_ti%E1%BB%87n_c%C3%B4ng_c%E1%BB%99ng-B%E1%BB%87nh_Vi%E1%BB%87n_%C4%90a_Khoa_Qu%E1%BB%91c_T%E1%BA%BF_Saigon-Th%C3%A0nh_ph%E1%BB%91_H%E1%BB%93_Ch%C3%AD_M%C3%ACnh-site_27273697-2880).\n\n3. **Khách sạn gần Bệnh Viện Nhi Đồng Thành Phố**: Discounts up to 30% are available for hotels near this children's hospital. More details can be found on [Traveloka](https://www.traveloka.com/vi-vn/hotel/vietnam/landmark/city-childrens-hospital-91725829598778).\n\n4. **Cơ sở khám sức khỏe định kỳ miễn phí**: A list of free health check-up facilities in Ho Chi Minh City is available, including various hospitals and clinics. Check the details on [VNExpress](https://vnexpress.net/nguoi-tam-tru-tai-tp-hcm-duoc-kham-suc-khoe-dinh-ky-mien-phi-5080251-p2.html).\n\nThese resources should help you find the information you need about hospitals nearby.",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "lookup",
+              "args": {
+                "query": "bệnh viện gần đây",
+                "topic": "general",
+                "timeframe": "week",
+                "max_results": 5
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "lookup",
+              "args": {
+                "query": "bệnh viện gần đây",
+                "topic": "general",
+                "timeframe": "week",
+                "max_results": 5
+              },
+              "result": {
+                "tool": "web_search",
+                "query": "bệnh viện gần đây",
+                "topic": "general",
+                "timeframe": "week",
+                "items": [
+                  {
+                    "title": "Trang chủ - Cổng thông tin điện tử",
+                    "url": "https://benhvien108.vn/home.htm",
+                    "source": "benhvien108.vn",
+                    "summary": "Bệnh viên trung ương qun đội 108   Bệnh viên trung ương qun đội 108. Vượt qua giới hạn sinh học: Những điều đọng lại sau ca ghép đa tạng tại Bệnh viện TWQĐ 108. Một thập kỷ hơn 700 ca ghép thận: Bệnh viện TWQĐ 108 chinh phục những ranh giới mới trong y học.jpg). ### Một thập kỷ hơn 700 ca ghép thận: Bệnh viện TWQĐ 108 chinh phục những ranh giới mới trong y học. * Thông báo: Lịch Sinh hoạt khoa học của các đơn vị trong Bệnh viện TWQĐ 108 từ ngày 25/05/2026 đến ngày 31/05/2026. * Bệnh viện TWQĐ 108: Tổ chức chương trình \"Khám, tư vấn và phẫu thuật nhn đạo cho trẻ nam có bệnh lý bất thường về bộ phận sinh dục năm 2026\". * Thông báo lần 1 Hội nghị Khoa học Dược Bệnh viện thường niên năm 2026. * Thông báo các đầu số điện thoại tiếp nhận thông tin và hướng dẫn người bệnh của Bệnh viện TWQĐ 108.",
+                    "score": 0.87147486
+                  },
+                  {
+                    "title": "Làm sao để đến Bệnh Viện Đa Khoa Quốc Tế Saigon ở Quận 1 bằng xe ...",
+                    "url": "https://moovitapp.com/index/vi/ph%C6%B0%C6%A1ng_ti%E1%BB%87n_c%C3%B4ng_c%E1%BB%99ng-B%E1%BB%87nh_Vi%E1%BB%87n_%C4%90a_Khoa_Qu%E1%BB%91c_T%E1%BA%BF_Saigon-Th%C3%A0nh_ph%E1%BB%91_H%E1%BB%93_Ch%C3%AD_Minh-site_27273697-2880",
+                    "source": "moovitapp.com",
+                    "summary": "Những ga ở gần Bệnh Viện Đa Khoa Quốc Tế Saigon nhất là: Cầu Ông Lãnh cách đây 93 mét, 2 phút đi bộ. Nguyễn Kim cách đây 229 mét, 4 phút đi bộ. Trần",
+                    "score": 0.58130306
+                  },
+                  {
+                    "title": "Khách sạn gần Bệnh Viện Nhi Đồng Thành Phố, Discount tới 30%",
+                    "url": "https://www.traveloka.com/vi-vn/hotel/vietnam/landmark/city-childrens-hospital-91725829598778",
+                    "source": "traveloka.com",
+                    "summary": "Khách sạn phổ biến gần Bệnh Viện Nhi Đồng Thành Phố ; B&M HOTEL · 1.047.119 VND ; La Hotel Binh Tan · 8.7/10 · (21 đánh giá) · 306.517 VND ; Aiden Saigon Hotel · 8.5/10.",
+                    "score": 0.51952136
+                  },
+                  {
+                    "title": "Một góc bệnh viện mình đang làm, Baylor University Medical Center ...",
+                    "url": "https://www.instagram.com/p/DY3A36TAOAE",
+                    "source": "instagram.com",
+                    "summary": "Một góc bệnh viện mình đang làm, Baylor University Medical Center (BUMC), bệnh viện lớn nhất vùng Dallas (tính theo số giường bệnh) #nurselife · #hospital · #",
+                    "score": 0.31912136
+                  },
+                  {
+                    "title": "Danh sách cơ sở khám sức khỏe định kỳ miễn phí cho người dân TP HCM cập nhật đến 31/5/2026 - Báo VnExpress Sức khỏe",
+                    "url": "https://vnexpress.net/nguoi-tam-tru-tai-tp-hcm-duoc-kham-suc-khoe-dinh-ky-mien-phi-5080251-p2.html",
+                    "source": "vnexpress.net",
+                    "summary": "|  | Bệnh viện Nhn dn Gia Định (cơ sở 2) | 125 Lê Lợi | Phường Bến Thành | x | x |. |  | Phòng khám đa khoa thuộc Trạm Y tế phường Bình Đông | 28 đường số 1 | Phường Bình Đông | x | x |. |  | Phòng khám đa khoa thuộc Điểm y tế 4 của Trạm y tế phường Bình Lợi Trung | 99/6 Nơ Trang Long | Phường Bình Lợi Trung | x | x |. | 7 | Bệnh viện đa khoa Bình Phú | 02D Chợ Lớn | Phường Bình Phú | x | x |. | 9 | Phòng khám đa khoa thuộc Trạm Y tế phường Bình Thới | 72A đường số 5, Cư xá Bình Thới | Phường Bình Thới | x | x |. | 28 | Phòng khám đa khoa thuộc Trạm Y tế phường Tn Bình | 12 Tn Hải | Phường Tn Bình | x | x |.",
+                    "score": 0.28616926
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Here are some recent resources related to hospitals:\n\n1. **Bệnh viện Trung ương Quân đội 108**: This hospital has made significant advancements in organ transplants, completing over 700 kidney transplants in the past decade. More information can be found on their official site: [benhvien108.vn](https://benhvien108.vn/home.htm).\n\n2. **Bệnh Viện Đa Khoa Quốc Tế Saigon**: Information on how to reach this hospital in District 1, Ho Chi Minh City, is available here: [Moovit](https://moovitapp.com/index/vi/ph%C6%B0%C6%A1ng_ti%E1%BB%87n_c%C3%B4ng_c%E1%BB%99ng-B%E1%BB%87nh_Vi%E1%BB%87n_%C4%90a_Khoa_Qu%E1%BB%91c_T%E1%BA%BF_Saigon-Th%C3%A0nh_ph%E1%BB%91_H%E1%BB%93_Ch%C3%AD_M%C3%ACnh-site_27273697-2880).\n\n3. **Khách sạn gần Bệnh Viện Nhi Đồng Thành Phố**: Discounts up to 30% are available for hotels near this children's hospital. More details can be found on [Traveloka](https://www.traveloka.com/vi-vn/hotel/vietnam/landmark/city-childrens-hospital-91725829598778).\n\n4. **Cơ sở khám sức khỏe định kỳ miễn phí**: A list of free health check-up facilities in Ho Chi Minh City is available, including various hospitals and clinics. Check the details on [VNExpress](https://vnexpress.net/nguoi-tam-tru-tai-tp-hcm-duoc-kham-suc-khoe-dinh-ky-mien-phi-5080251-p2.html).\n\nThese resources should help you find the information you need about hospitals nearby.",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "bệnh viện gần đây",
+            "topic": "general",
+            "timeframe": "week",
+            "max_results": 5
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "bệnh viện gần đây",
+            "topic": "general",
+            "timeframe": "week",
+            "items": [
+              {
+                "title": "Trang chủ - Cổng thông tin điện tử",
+                "url": "https://benhvien108.vn/home.htm",
+                "source": "benhvien108.vn",
+                "summary": "Bệnh viên trung ương qun đội 108   Bệnh viên trung ương qun đội 108. Vượt qua giới hạn sinh học: Những điều đọng lại sau ca ghép đa tạng tại Bệnh viện TWQĐ 108. Một thập kỷ hơn 700 ca ghép thận: Bệnh viện TWQĐ 108 chinh phục những ranh giới mới trong y học.jpg). ### Một thập kỷ hơn 700 ca ghép thận: Bệnh viện TWQĐ 108 chinh phục những ranh giới mới trong y học. * Thông báo: Lịch Sinh hoạt khoa học của các đơn vị trong Bệnh viện TWQĐ 108 từ ngày 25/05/2026 đến ngày 31/05/2026. * Bệnh viện TWQĐ 108: Tổ chức chương trình \"Khám, tư vấn và phẫu thuật nhn đạo cho trẻ nam có bệnh lý bất thường về bộ phận sinh dục năm 2026\". * Thông báo lần 1 Hội nghị Khoa học Dược Bệnh viện thường niên năm 2026. * Thông báo các đầu số điện thoại tiếp nhận thông tin và hướng dẫn người bệnh của Bệnh viện TWQĐ 108.",
+                "score": 0.87147486
+              },
+              {
+                "title": "Làm sao để đến Bệnh Viện Đa Khoa Quốc Tế Saigon ở Quận 1 bằng xe ...",
+                "url": "https://moovitapp.com/index/vi/ph%C6%B0%C6%A1ng_ti%E1%BB%87n_c%C3%B4ng_c%E1%BB%99ng-B%E1%BB%87nh_Vi%E1%BB%87n_%C4%90a_Khoa_Qu%E1%BB%91c_T%E1%BA%BF_Saigon-Th%C3%A0nh_ph%E1%BB%91_H%E1%BB%93_Ch%C3%AD_Minh-site_27273697-2880",
+                "source": "moovitapp.com",
+                "summary": "Những ga ở gần Bệnh Viện Đa Khoa Quốc Tế Saigon nhất là: Cầu Ông Lãnh cách đây 93 mét, 2 phút đi bộ. Nguyễn Kim cách đây 229 mét, 4 phút đi bộ. Trần",
+                "score": 0.58130306
+              },
+              {
+                "title": "Khách sạn gần Bệnh Viện Nhi Đồng Thành Phố, Discount tới 30%",
+                "url": "https://www.traveloka.com/vi-vn/hotel/vietnam/landmark/city-childrens-hospital-91725829598778",
+                "source": "traveloka.com",
+                "summary": "Khách sạn phổ biến gần Bệnh Viện Nhi Đồng Thành Phố ; B&M HOTEL · 1.047.119 VND ; La Hotel Binh Tan · 8.7/10 · (21 đánh giá) · 306.517 VND ; Aiden Saigon Hotel · 8.5/10.",
+                "score": 0.51952136
+              },
+              {
+                "title": "Một góc bệnh viện mình đang làm, Baylor University Medical Center ...",
+                "url": "https://www.instagram.com/p/DY3A36TAOAE",
+                "source": "instagram.com",
+                "summary": "Một góc bệnh viện mình đang làm, Baylor University Medical Center (BUMC), bệnh viện lớn nhất vùng Dallas (tính theo số giường bệnh) #nurselife · #hospital · #",
+                "score": 0.31912136
+              },
+              {
+                "title": "Danh sách cơ sở khám sức khỏe định kỳ miễn phí cho người dân TP HCM cập nhật đến 31/5/2026 - Báo VnExpress Sức khỏe",
+                "url": "https://vnexpress.net/nguoi-tam-tru-tai-tp-hcm-duoc-kham-suc-khoe-dinh-ky-mien-phi-5080251-p2.html",
+                "source": "vnexpress.net",
+                "summary": "|  | Bệnh viện Nhn dn Gia Định (cơ sở 2) | 125 Lê Lợi | Phường Bến Thành | x | x |. |  | Phòng khám đa khoa thuộc Trạm Y tế phường Bình Đông | 28 đường số 1 | Phường Bình Đông | x | x |. |  | Phòng khám đa khoa thuộc Điểm y tế 4 của Trạm y tế phường Bình Lợi Trung | 99/6 Nơ Trang Long | Phường Bình Lợi Trung | x | x |. | 7 | Bệnh viện đa khoa Bình Phú | 02D Chợ Lớn | Phường Bình Phú | x | x |. | 9 | Phòng khám đa khoa thuộc Trạm Y tế phường Bình Thới | 72A đường số 5, Cư xá Bình Thới | Phường Bình Thới | x | x |. | 28 | Phòng khám đa khoa thuộc Trạm Y tế phường Tn Bình | 12 Tn Hải | Phường Tn Bình | x | x |.",
+                "score": 0.28616926
+              }
+            ]
+          }
+        }
+      ],
+      "ended_at": "2026-06-02T15:22:44"
+    }
+  ]
+}

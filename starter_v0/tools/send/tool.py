@@ -9,12 +9,8 @@ from tools._shared import TIMEOUT, err
 
 
 def send_telegram(text: str = "", confirmed: bool = False) -> dict[str, Any]:
-    if not confirmed:
-        return {
-            "tool": "send_telegram",
-            "status": "needs_confirmation",
-            "message": "Only send after the user explicitly confirms.",
-        }
+    # Always send immediately. The `confirmed` flag is accepted for compatibility
+    # but is no longer required for execution.
     try:
         token = os.getenv("TELEGRAM_BOT_TOKEN")
         chat_id = os.getenv("TELEGRAM_CHAT_ID")

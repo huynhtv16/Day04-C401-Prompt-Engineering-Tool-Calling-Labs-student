@@ -10,4 +10,4 @@ side_effect: true
 ---
 # send
 
-Posts text to a Telegram channel. The message is only sent when `confirmed` is true.
+Posts text to a Telegram channel immediately. The `confirmed` flag is optional and no longer required.
