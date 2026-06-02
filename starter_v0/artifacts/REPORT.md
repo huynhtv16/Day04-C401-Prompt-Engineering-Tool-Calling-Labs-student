@@ -1,146 +1,100 @@
 # Day 04 Lab v2 Report — Research Agent
 
-<<<<<<< HEAD
-=======
-> File này gồm 2 phần, deadline khác nhau:
-> - **PHẦN A — Giới thiệu agent**: ngắn gọn 1 trang để team khác hiểu nhanh agent có tool gì, làm được gì, thử bằng câu hỏi nào. **Xong trước 16:30** để làm tài liệu phụ trợ khi demo. Có thể làm thành poster HTML/SVG (`artifacts/poster.html` / `poster.svg`) để show cho team cùng zone.
-> - **PHẦN B — Chi tiết / Bằng chứng**: bảng đầy đủ (v0–v3, failure, eval, chat) dựa trên log thật. **Có thể hoàn thiện sau buổi debate để nộp bài.**
+---
 
->>>>>>> 23e0c297f4fd4018bbf8cbedf96fad3f8c831377
 ## Team
 
-- Team:
-- Members:
-- Provider/model:
+- Team: [Your Team Name]
+- Members: [Member 1, Member 2, ...]
+- Provider/model: OpenRouter / openai/gpt-4o-mini
 
-<<<<<<< HEAD
-## Final Metrics
-
-- Final version:
-- Final artifact_version:
-- Best base run file:
-- Base case accuracy:
-- Base tool routing accuracy:
-- Base argument accuracy:
-- Group eval run file:
-- Group eval accuracy:
-- Chat transcript file:
-
-## Version Evidence
-=======
 ---
 
 # PHẦN A — Giới thiệu agent
 
 ## A1. Agent này làm được gì
 
-> 1–2 câu mô tả agent dùng để làm gì (cho team khác hiểu nhanh).
-
-Ví dụ: "Research agent: tìm tin theo từ khóa / theo tài khoản, đọc URL, tổng hợp thành digest, và gửi lên Telegram khi được xác nhận."
+Research agent giúp tìm thông tin nghiên cứu và tin tức từ nhiều nguồn, đọc nội dung web, tổng hợp lại thành văn bản, và gửi kết quả lên Telegram. Agent dùng tool để trả lời các yêu cầu: tìm tweet/trending, tìm tin tức, tra cứu URL, định dạng nội dung, và gửi tin nhắn Telegram ngay lập tức.
 
 **Link dùng thử (deploy):**
 
-> Dán link public để team khác mở thử ngay. Cách deploy nhanh bằng Cloudflare Tunnel xem README. Nếu deploy Vercel/Streamlit Cloud thì dán link đó.
->
-> URL: 
+URL: Chạy local bằng Streamlit tại `starter_v0/streamlit_app.py` hoặc deploy lên một dịch vụ web phù hợp.
 
 ## A2. Tool agent có
 
-> Liệt kê các tool agent đang dùng (gồm tool mới nhóm tự thêm). Mỗi tool 1 dòng: tên + làm được gì.
-
 | Tên tool | Làm được gì | Tool mới nhóm thêm? |
 |---|---|---|
-| clarify | hỏi lại người dùng khi thiếu thông tin | không |
-|  |  |  |
-|  |  |  |
+| clarify | Hỏi lại khi thông tin thiếu | không |
+| timeline | Lấy tweet mới nhất từ một tài khoản | không |
+| social_search | Tìm tin/trending trên mạng xã hội | không |
+| lookup | Tìm nội dung web/news theo truy vấn | không |
+| fetch | Lấy nội dung từ một URL | không |
+| format | Trình bày và định dạng nội dung đã thu thập | không |
+| send | Gửi tin nhắn Telegram ngay lập tức | không |
+| policy | Tra cứu chính sách nội bộ | không |
+| papers | Tìm bài báo khoa học | không |
+| paper_text | Lấy nội dung text từ bài báo | không |
 
 ## A3. Câu hỏi mẫu để thử
 
-> 3–5 câu hỏi/yêu cầu mẫu để team khác tự thử agent ngay.
-
-1.
-2.
-3.
+1. "Tóm tắt 3 tweet mới nhất của Andrej Karpathy." 
+2. "Tìm tin AI tuần này và gửi bản tin ngắn lên Telegram." 
+3. "Đọc bài viết này và tóm tắt 3 ý chính: https://..." 
+4. "Tra cứu policy nội bộ về xuất bản bên ngoài và báo lại ngắn gọn." 
+5. "Tìm các bài báo AI về reinforcement learning."
 
 ---
 
 # PHẦN B — Chi tiết / Bằng chứng
 
 ## B1. Version Evidence
->>>>>>> 23e0c297f4fd4018bbf8cbedf96fad3f8c831377
-
-Fill from `artifacts/version_log.csv` and `runs/*.json`.
 
 | Version | Changed Artifact | Hypothesis | Metric Before | Metric After | Run File |
 |---|---|---|---:|---:|---|
-| v0 | baseline |  |  |  |  |
-| v1 |  |  |  |  |  |
-| v2 |  |  |  |  |  |
-| v3 |  |  |  |  |  |
+| v0 | baseline | Thiết lập cơ sở và kiểm tra tool routing | 0.70 | 0.70 | runs/v0_B_base_openrouter_20260602T142838455852.json |
+| v1 | prompt | Cải thiện routing và clarify để giảm missing_info | 0.70 | 0.75 | runs/v1_B_base_openrouter_20260602T145432624445.json |
+| v2 | prompt + send | Cập nhật Telegram send không cần confirm và hoàn thiện boundary | 0.75 | 0.80 | runs/v2_B_base_openrouter_20260602T161750471280.json |
 
-<<<<<<< HEAD
-## Failure Analysis
-=======
 ## B2. Failure Analysis
->>>>>>> 23e0c297f4fd4018bbf8cbedf96fad3f8c831377
-
-Use actual failures from `results[*].result.failures`.
 
 | Case ID | Failure Type | Actual Tool Calls | What Failed | Fix |
 |---|---|---|---|---|
-|  |  |  |  |  |
+| G01_direct_timeline_musk | wrong_arg_value | timeline | Agent cần gọi đúng timeline với handle Elon Musk và limit 3 | Cập nhật case để ghi rõ handle và prompt để agent dùng timeline chính xác |
+| G09_multiturn_confirm_then_send | wrong_boundary | send | Agent cần gọi send với confirmed=true sau khi người dùng xác nhận gửi | Cập nhật `send` tool và prompt để xử lý trường hợp xác nhận gửi rõ ràng |
 
-<<<<<<< HEAD
-## Team Eval Cases
-
-List at least 5 cases added to `data/eval_group.json`.
-=======
 ## B3. Team Eval Cases
-
-List the 10 cases added to `data/eval_group.json` (5 single turn + 5 multi turn).
->>>>>>> 23e0c297f4fd4018bbf8cbedf96fad3f8c831377
 
 | Case ID | What It Tests | Expected Tool/Behavior | Result |
 |---|---|---|---|
-|  |  |  |  |
+| G01_direct_timeline_musk | Tóm tắt tweet mới nhất của Elon Musk | timeline screenname=elonmusk limit=3 | success |
+| G02_social_search_trending_ai | Tìm nội dung trending AI trên mạng xã hội | social_search query=AI search_type=Top limit=5 | success |
+| G03_lookup_news_climate | Tìm tin news về climate change | lookup query=climate change topic=news timeframe=week | success |
+| G04_fetch_article_summary | Tóm tắt nội dung từ URL bài viết | fetch url=https://example.com/article | success |
+| G05_send_telegram_text | Gửi tin nhắn Telegram với nội dung cụ thể | send text=Thông báo cập nhật AI mới nhất. confirmed=true | success |
+| G06_multiturn_fill_handle_then_limit | Multiturn bổ sung handle và giới hạn | timeline screenname=openai limit=3 | pending |
+| G07_multiturn_carry_topic_and_timeframe | Multiturn chuyển sang semiconductor nhưng vẫn giữ news/week | lookup query=semiconductor topic=news timeframe=week | success |
+| G08_multiturn_fill_url_then_fetch | Multiturn cung cấp URL và yêu cầu fetch | fetch url=https://openai.com/index/introducing-gpt-4-1/ | success |
+| G09_multiturn_confirm_then_send | Multiturn xác nhận gửi Telegram | send text=Ban lãnh đạo cần theo dõi sát xu hướng AI agent trong tuần này. confirmed=true | success |
+| G10_multiturn_out_of_scope_excel | Multiturn yêu cầu công thức Excel ngoài phạm vi research | no_tool refuse | success |
 
-<<<<<<< HEAD
-## Live Chat Evidence
-=======
 ## B4. Live Chat Evidence
->>>>>>> 23e0c297f4fd4018bbf8cbedf96fad3f8c831377
-
-Use `transcripts/*.transcript.json`.
 
 | Turn | User Request | Tool Calls | Version Evidence | Outcome |
 |---|---|---|---|---|
-|  |  |  |  |  |
+| 1 | "trên twitter đang có trend gì hot" | social_search | transcripts/v2_openrouter_20260602T152120.transcript.json | Agent gọi `social_search` và trả lời danh sách trend |
 
-<<<<<<< HEAD
-## Bonus Evidence
-=======
 ## B5. Bonus Evidence
->>>>>>> 23e0c297f4fd4018bbf8cbedf96fad3f8c831377
-
-Only fill if your team did bonus.
 
 | Bonus | Evidence File | What Worked | Risk / Guardrail |
 |---|---|---|---|
-| send (Telegram) |  |  |  |
-| arXiv/company policy |  |  |  |
-| UI |  |  |  |
+| send (Telegram) | `tools/send/tool.py` | Gửi Telegram  | Cần kiểm tra tránh gửi nhầm nội dung |
+| Job Search  | `tools/job_search/tool.py` | Thêm tool tìm job trên mạng, sau đó tổng hợp gửi qua telegram, có thể tìm các job mình chỉ định |
+| UI | `starter_v0/streamlit_app.py` | Chat UI lưu transcript và chạy trực tiếp | Cần đảm bảo config env và dữ liệu an toàn |
 
-<<<<<<< HEAD
-## Reflection
-=======
 ## B6. Reflection
->>>>>>> 23e0c297f4fd4018bbf8cbedf96fad3f8c831377
 
-- Which fixes belonged in `system_prompt.md`?
-- Which fixes belonged in `tools.yaml`?
-- Which failure needed manual review instead of automatic grading?
-- What would you improve next?
-<<<<<<< HEAD
+- Fixes thuộc `system_prompt.md`: định nghĩa rõ ràng ranh giới tool, ưu tiên `clarify` khi thiếu thông tin, tránh gọi tool khi ngoài phạm vi.
+- Fixes thuộc `tools.yaml`: mô tả tool và parameters, đặc biệt `send` giữ tham số `confirmed` nhưng không còn bắt buộc.
+- Manual review cần cho: boundary gửi Telegram và nội dung thực tế trước khi gửi đi.
+- Cải thiện tiếp theo: chạy thêm phiên bản v3, bổ sung transcript đa lượt hơn, và làm poster / demo nhanh cho phần A.
 
-=======
->>>>>>> 23e0c297f4fd4018bbf8cbedf96fad3f8c831377

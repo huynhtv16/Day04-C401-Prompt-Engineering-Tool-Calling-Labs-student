@@ -1,0 +1,78 @@
+{
+  "transcript_id": "v0_openrouter_20260602T163942",
+  "version": "v0",
+  "artifact_version": "v0+pf7522b5ad1dd+t2f9cc93c64ed",
+  "prompt_hash": "f7522b5ad1dd58f297c1b0980e7ece5a8906b6556c8915cf698d4710a5cd27f8",
+  "tools_hash": "2f9cc93c64ed9aa86e94d01dca4c58c7c8f5caf87ea07609fb87967cf30eb94a",
+  "provider": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "system_prompt": "C:\\Documents\\Vin\\buoi4\\Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "C:\\Documents\\Vin\\buoi4\\Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student\\starter_v0\\artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-06-02T16:39:42",
+  "updated_at": "2026-06-02T16:40:02",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-06-02T16:40:02",
+      "user": "Năm nay là năm bao nhiêu ",
+      "status": "answered",
+      "assistant_text": "Năm nay là năm 2023.",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "lookup",
+              "args": {
+                "query": "current year",
+                "topic": "general"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "lookup",
+              "args": {
+                "query": "current year",
+                "topic": "general"
+              },
+              "result": {
+                "tool": "web_search",
+                "query": "current year",
+                "topic": "general",
+                "timeframe": "week",
+                "items": []
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Năm nay là năm 2023.",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "current year",
+            "topic": "general"
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "current year",
+            "topic": "general",
+            "timeframe": "week",
+            "items": []
+          }
+        }
+      ],
+      "ended_at": "2026-06-02T16:40:02"
+    }
+  ]
+}

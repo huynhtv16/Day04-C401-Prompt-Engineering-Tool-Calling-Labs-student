@@ -2,6 +2,289 @@
   "dataset_id": "day04_v2_research_group",
   "dataset_role": "group",
   "description": "Case do NHÓM tự viết thêm để cover thêm trường hợp. Mỗi case cần: id, phase='B', query HOẶC turns, failure_type (thuộc allowed_failure_types), và expect (tool_calls[...] hoặc no_tool=true). Nên kèm metadata.what_it_tests.",
-  "allowed_failure_types": ["wrong_tool", "wrong_arg_value", "wrong_boundary", "unnecessary_tool", "out_of_scope", "missing_info"],
-  "cases": []
+  "allowed_failure_types": [
+    "wrong_tool",
+    "wrong_arg_value",
+    "wrong_boundary",
+    "unnecessary_tool",
+    "out_of_scope",
+    "missing_info"
+  ],
+  "cases": [
+    {
+      "id": "G01_direct_timeline_musk",
+      "phase": "B",
+      "query": "Tóm tắt 3 tweet mới nhất của Elon Musk.",
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "elonmusk",
+              "limit": 3
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "timeline_direct_handle",
+        "difficulty": "medium",
+        "what_it_tests": "Agent cần gọi timeline với screenname Elon Musk khi user yêu cầu tweet mới nhất."
+      }
+    },
+    {
+      "id": "G02_social_search_trending_ai",
+      "phase": "B",
+      "query": "Cho tôi 5 nội dung trending về AI trên mạng xã hội.",
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "social_search",
+            "args": {
+              "query": "AI",
+              "search_type": "Top",
+              "limit": 5
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "social_search_trending",
+        "difficulty": "medium",
+        "what_it_tests": "Agent phải dùng social_search với query AI và search_type Top."
+      }
+    },
+    {
+      "id": "G03_lookup_news_climate",
+      "phase": "B",
+      "query": "Tìm tin mới nhất về climate change trong tuần này.",
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "climate change",
+              "topic": "news",
+              "timeframe": "week"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "lookup_news",
+        "difficulty": "medium",
+        "what_it_tests": "Agent phải dùng lookup để tìm news về climate change trong tuần này."
+      }
+    },
+    {
+      "id": "G04_fetch_article_summary",
+      "phase": "B",
+      "query": "Đọc nội dung https://example.com/article và tóm tắt thành 3 câu.",
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "fetch",
+            "args": {
+              "url": "https://example.com/article"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "fetch_article",
+        "difficulty": "medium",
+        "what_it_tests": "Agent phải dùng fetch với URL được cung cấp."
+      }
+    },
+    {
+      "id": "G05_send_telegram_text",
+      "phase": "B",
+      "query": "Gửi nội dung này lên Telegram: Thông báo cập nhật AI mới nhất.",
+      "failure_type": "wrong_boundary",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "send",
+            "args": {
+              "text": "Thông báo cập nhật AI mới nhất.",
+              "confirmed": true
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "send_immediate",
+        "difficulty": "medium",
+        "what_it_tests": "Agent phải gọi send với text chính xác và confirmed=true."
+      }
+    },
+    {
+      "id": "G06_multiturn_fill_handle_then_limit",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tóm tắt tweet mới nhất giúp mình"
+        },
+        {
+          "role": "user",
+          "content": "Của OpenAI nhé"
+        },
+        {
+          "role": "user",
+          "content": "Lấy đúng 3 tweet thôi"
+        }
+      ],
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "openai",
+              "limit": 3
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_fill_handle",
+        "difficulty": "hard",
+        "what_it_tests": "Agent phải dùng timeline sau khi người dùng bổ sung handle và limit."
+      }
+    },
+    {
+      "id": "G07_multiturn_carry_topic_and_timeframe",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tin AI tuần này có gì đáng chú ý?"
+        },
+        {
+          "role": "user",
+          "content": "Đổi sang semiconductor đi"
+        },
+        {
+          "role": "user",
+          "content": "Chỉ tìm semiconductor thôi, vẫn là tin tuần này"
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "semiconductor",
+              "topic": "news",
+              "timeframe": "week"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_carry_topic",
+        "difficulty": "hard",
+        "what_it_tests": "Agent phải giữ topic news và timeframe week khi chuyển sang semiconductor."
+      }
+    },
+    {
+      "id": "G08_multiturn_fill_url_then_fetch",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tóm tắt bài viết này giúp mình"
+        },
+        {
+          "role": "user",
+          "content": "Đây là link: https://openai.com/index/introducing-gpt-4-1/"
+        },
+        {
+          "role": "user",
+          "content": "Tóm tắt ngắn gọn thôi"
+        }
+      ],
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "fetch",
+            "args": {
+              "url": "https://openai.com/index/introducing-gpt-4-1/"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_fetch_url",
+        "difficulty": "hard",
+        "what_it_tests": "Agent phải dùng fetch sau khi nhận được URL trong lượt thứ hai."
+      }
+    },
+    {
+      "id": "G09_multiturn_confirm_then_send",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Gửi bản tin này lên Telegram giúp mình"
+        },
+        {
+          "role": "user",
+          "content": "Mình xác nhận gửi"
+        },
+        {
+          "role": "user",
+          "content": "Nội dung là: Ban lãnh đạo cần theo dõi sát xu hướng AI agent trong tuần này."
+        }
+      ],
+      "failure_type": "wrong_boundary",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "send",
+            "args": {
+              "text": "Ban lãnh đạo cần theo dõi sát xu hướng AI agent trong tuần này.",
+              "confirmed": true
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_confirm_send",
+        "difficulty": "hard",
+        "what_it_tests": "Agent phải gọi send với confirmed=true sau khi người dùng xác nhận rõ."
+      }
+    },
+    {
+      "id": "G10_multiturn_out_of_scope_excel",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tôi cần công thức Excel VLOOKUP để tra cứu dữ liệu."
+        },
+        {
+          "role": "user",
+          "content": "Đây không phải nội dung nghiên cứu, chỉ cần cách viết công thức."
+        }
+      ],
+      "failure_type": "out_of_scope",
+      "expect": {
+        "no_tool": true,
+        "behavior": "refuse"
+      },
+      "metadata": {
+        "skill": "multiturn_out_of_scope",
+        "difficulty": "medium",
+        "what_it_tests": "Agent phải từ chối yêu cầu ngoài phạm vi research mà không gọi tool."
+      }
+    }
+  ]
 }

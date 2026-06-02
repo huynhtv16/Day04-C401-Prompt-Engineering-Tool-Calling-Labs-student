@@ -25,21 +25,14 @@ Nhiệm vụ bắt buộc:
 - Viết thêm ít nhất 1 tool mới (kèm `TOOL.md`, đăng ký trong `tools/__init__.py` và `tools.yaml`).
 - Tự viết thêm 10 eval case vào `data/eval_group.json`, trong đó 5 single turn và 5 multi turn.
 - Nộp run JSON, transcript JSON, report.
-<<<<<<< HEAD
-=======
 - Bắt buộc có UI chạy được bằng Streamlit hoặc Vercel.
 - Hoàn thành `artifacts/REPORT.md`: Phần A (giới thiệu agent: tool gì, làm được gì, câu hỏi mẫu) xong **trước 16:30** làm tài liệu phụ trợ khi demo; Phần B (chi tiết) hoàn thiện sau để nộp bài.
->>>>>>> 23e0c297f4fd4018bbf8cbedf96fad3f8c831377
 
 Bonus:
 
 - Action tool `send`: có confirmation trước khi gửi.
 - Extra tools: `policy`, `papers`, `paper_text`.
-<<<<<<< HEAD
 - UI: Streamlit hoặc Vercel.
-=======
-
->>>>>>> 23e0c297f4fd4018bbf8cbedf96fad3f8c831377
 
 **Điểm thưởng (bonus point):** team nào làm **CẢ HAI** — dựng được UI **và** tự viết thêm hơn 3 tool mới (ngoài các tool có sẵn, kèm `TOOL.md` + đăng ký trong `tools/__init__.py` + `tools.yaml`) — sẽ được cộng điểm thưởng.
 
@@ -55,11 +48,7 @@ starter_v0/
     system_prompt.md          # student edits
     tools.yaml                # student edits
     version_log.csv           # student fills
-<<<<<<< HEAD
-    REPORT.md                 # final report template
-=======
     REPORT.md                 # report: Phần A debate poster + Phần B chi tiết
->>>>>>> 23e0c297f4fd4018bbf8cbedf96fad3f8c831377
   data/
     eval_base.json            # fixed base eval, do not edit the cases
     eval_group.json           # team adds at least 5 cases
@@ -251,8 +240,6 @@ Try at least 3 live turns, for example:
 - A request thiếu thông tin (không nói rõ account/URL), rồi lượt sau bổ sung.
 - Một request "đăng/gửi bản tin lên Telegram" — quan sát agent có hành động ngay hay hỏi lại trước, rồi tự quyết định hành vi nào mới đúng và sửa prompt cho khớp.
 
-<<<<<<< HEAD
-=======
 ## Deploy nhanh để team khác dùng thử (khuyến nghị: Cloudflare Tunnel)
 
 Để team cùng zone tự thử agent trong Team showdown, expose UI đang chạy local ra một link public. Cách nhanh nhất, không cần đăng ký domain hay deploy lên cloud, là **Cloudflare Tunnel** (`cloudflared`).
@@ -281,7 +268,7 @@ Try at least 3 live turns, for example:
 
 4. Copy URL đó, dán vào `REPORT.md` Phần A (mục "Link dùng thử") để team khác mở thử.
 
-Lưu ý: link `trycloudflare.com` là tạm thời, sống theo phiên `cloudflared` (tắt lệnh là mất). Giữ lệnh chạy trong suốt buổi showdown. Nếu team deploy hẳn lên Vercel/Streamlit Cloud thì dùng link đó thay cho tunnel.
+Lưu ý: link `trycloudflared.com` là tạm thời, sống theo phiên `cloudflared` (tắt lệnh là mất). Giữ lệnh chạy trong suốt buổi showdown. Nếu team deploy hẳn lên Vercel/Streamlit Cloud thì dùng link đó thay cho tunnel.
 
 ## Step 6 — Report + Debate Poster
 
@@ -292,7 +279,6 @@ Hoàn thành `artifacts/REPORT.md`. File này có 2 phần với deadline khác 
 
 **Format Phần A:** nộp tối thiểu bản markdown trong `REPORT.md`. Khuyến khích biến Phần A thành **poster HTML/SVG 1 trang** để show trực tiếp cho team cùng zone (ví dụ `artifacts/poster.html` hoặc `artifacts/poster.svg`) — cùng nội dung, dễ nhìn hơn. Poster HTML/SVG là tùy chọn, không thay thế bản markdown.
 
->>>>>>> 23e0c297f4fd4018bbf8cbedf96fad3f8c831377
 ## Submit
 
 Submit `starter_v0/` with:
@@ -300,12 +286,8 @@ Submit `starter_v0/` with:
 - `artifacts/system_prompt.md`
 - `artifacts/tools.yaml`
 - `artifacts/version_log.csv` with at least `v0`, `v1`, `v2`, `v3`
-<<<<<<< HEAD
-- `artifacts/REPORT.md`
-=======
 - `artifacts/REPORT.md` (Phần A debate poster — xong trước 16:30; Phần B chi tiết — nộp sau)
 - `artifacts/poster.html` hoặc `artifacts/poster.svg` nếu team làm poster để debate (tùy chọn)
->>>>>>> 23e0c297f4fd4018bbf8cbedf96fad3f8c831377
 - `data/eval_group.json` with at least 5 team cases
 - `runs/*.json`
 - `analysis/*.csv` if you parsed run logs
@@ -314,7 +296,6 @@ Submit `starter_v0/` with:
 
 Do not submit `.env` or API keys.
 
-<<<<<<< HEAD
 ## Timeline 4h
 
 - 0:00-0:25 setup, keys, preflight.
@@ -325,12 +306,3 @@ Do not submit `.env` or API keys.
 - 2:45-3:20 chat live + transcript.
 - 3:20-3:50 report.
 - 3:50-4:00 package and final sanity check.
-=======
-## Checkpoint 4h
-
-- 15:00 - Run baseline + build UI
-- 15:30 - Improve prompt/tools for v1 + build at least 1 tool
-- 16:00 - Write team eval cases + improve v2
-- 16:30 - Team showdown (demo sản phẩm; REPORT.md Phần A / poster là tài liệu phụ trợ để team khác hiểu nhanh agent có tool gì, làm được gì)
-- 17:30 - Improve v3 + hoàn thiện report Phần B
->>>>>>> 23e0c297f4fd4018bbf8cbedf96fad3f8c831377
