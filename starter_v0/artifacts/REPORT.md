@@ -71,7 +71,7 @@ URL: Chạy local bằng Streamlit tại `starter_v0/streamlit_app.py` hoặc de
 | G03_lookup_news_climate | Tìm tin news về climate change | lookup query=climate change topic=news timeframe=week | success |
 | G04_fetch_article_summary | Tóm tắt nội dung từ URL bài viết | fetch url=https://example.com/article | success |
 | G05_send_telegram_text | Gửi tin nhắn Telegram với nội dung cụ thể | send text=Thông báo cập nhật AI mới nhất. confirmed=true | success |
-| G06_multiturn_fill_handle_then_limit | Multiturn bổ sung handle và giới hạn | timeline screenname=openai limit=3 | pending |
+| G06_multiturn_fill_handle_then_limit | Multiturn bổ sung handle và giới hạn | timeline screenname=openai limit=3 | success |
 | G07_multiturn_carry_topic_and_timeframe | Multiturn chuyển sang semiconductor nhưng vẫn giữ news/week | lookup query=semiconductor topic=news timeframe=week | success |
 | G08_multiturn_fill_url_then_fetch | Multiturn cung cấp URL và yêu cầu fetch | fetch url=https://openai.com/index/introducing-gpt-4-1/ | success |
 | G09_multiturn_confirm_then_send | Multiturn xác nhận gửi Telegram | send text=Ban lãnh đạo cần theo dõi sát xu hướng AI agent trong tuần này. confirmed=true | success |
