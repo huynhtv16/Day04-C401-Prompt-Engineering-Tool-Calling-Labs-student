@@ -25,6 +25,7 @@ URL: chạy public trên cloudflare https://endorsed-advertiser-interpreted-rese
 | Tên tool | Làm được gì | Tool mới nhóm thêm? |
 |---|---|---|
 | clarify | Hỏi lại khi thông tin thiếu | không |
+| job search | Tìm các job trên mọi web đa nền tảng như linkedIn, ..| Có |
 | timeline | Lấy tweet mới nhất từ một tài khoản | không |
 | social_search | Tìm tin/trending trên mạng xã hội | không |
 | lookup | Tìm nội dung web/news theo truy vấn | không |
@@ -33,7 +34,6 @@ URL: chạy public trên cloudflare https://endorsed-advertiser-interpreted-rese
 | send | Gửi tin nhắn Telegram ngay lập tức | Có gửi tele khi được yêu cầu |
 | policy | Tra cứu chính sách nội bộ | không |
 | papers | Tìm bài báo khoa học | không |
-| job search | Tìm các job trên mọi web đa nền tảng như linkedIn, ..| Có |
 | paper_text | Lấy nội dung text từ bài báo | không |
 
 ## A3. Câu hỏi mẫu để thử
