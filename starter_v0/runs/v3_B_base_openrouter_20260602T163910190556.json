@@ -1,8 +1,8 @@
 {
-  "run_id": "v1_B_base_openrouter_20260602T154832277157",
-  "version": "v1",
-  "artifact_version": "v1+p25709140c29a+t6cdb53d5d7b8",
-  "prompt_hash": "25709140c29a77cab658192195da0a4f85999c3b3be81b9ccd97b364cef3699c",
+  "run_id": "v3_B_base_openrouter_20260602T163910190556",
+  "version": "v3",
+  "artifact_version": "v3+p7ff64886bbdf+t6cdb53d5d7b8",
+  "prompt_hash": "7ff64886bbdf644b42fcc2374936b929907730d87b41125b223cc17c8169f767",
   "tools_hash": "6cdb53d5d7b8de80d60b298b1357f462cedbedfae261d5ba60b08ccc401687c5",
   "phase": "B",
   "suite": "base",
@@ -14,26 +14,22 @@
   "dataset_id": "day04_v2_research_base",
   "dataset_role": "base",
   "description": "Core eval cho research agent: routing đúng tool + đúng args, hỏi lại khi thiếu (ask_user), xác nhận trước khi gửi, và xử lý câu ngoài phạm vi / không cần tool. Chấm trên tool_calls + args (subset). KHÔNG sửa file này — chỉ thêm case vào eval_group.json.",
-  "generated_at": "2026-06-02T15:48:32",
+  "generated_at": "2026-06-02T16:39:10",
   "summary": {
     "total_cases": 20,
     "measured_cases": 20,
     "provider_error_cases": 0,
-    "passed_cases": 15,
-    "case_accuracy": 0.75,
-    "tool_routing_accuracy": 0.8,
-    "argument_accuracy": 0.75,
+    "passed_cases": 17,
+    "case_accuracy": 0.85,
+    "tool_routing_accuracy": 1.0,
+    "argument_accuracy": 0.85,
     "multiturn_accuracy": 1.0,
     "failure_counts": {
-      "out_of_scope": 1,
       "missing_info": 2,
-      "wrong_boundary": 1,
-      "wrong_tool": 1
+      "wrong_boundary": 1
     },
     "observed_mismatch_counts": {
-      "unexpected_tool_call": 1,
-      "missing_tool_call": 3,
-      "wrong_arg_value": 1
+      "wrong_arg_value": 3
     }
   },
   "results": [
@@ -183,8 +179,7 @@
             "args": {
               "query": "AI",
               "topic": "news",
-              "timeframe": "day",
-              "max_results": 5
+              "timeframe": "day"
             }
           }
         ],
@@ -200,8 +195,7 @@
           "args": {
             "query": "AI",
             "topic": "news",
-            "timeframe": "day",
-            "max_results": 5
+            "timeframe": "day"
           },
           "result": {
             "tool": "web_search",
@@ -353,10 +347,9 @@
           {
             "name": "lookup",
             "args": {
-              "query": "tin công nghệ",
+              "query": "công nghệ",
               "topic": "news",
-              "timeframe": "week",
-              "max_results": 5
+              "timeframe": "week"
             }
           }
         ],
@@ -370,10 +363,9 @@
         {
           "tool": "lookup",
           "args": {
-            "query": "tin công nghệ",
+            "query": "công nghệ",
             "topic": "news",
-            "timeframe": "week",
-            "max_results": 5
+            "timeframe": "week"
           },
           "result": {
             "tool": "web_search",
@@ -414,8 +406,7 @@
             "name": "social_search",
             "args": {
               "query": "OpenAI",
-              "search_type": "Top",
-              "limit": 5
+              "search_type": "Top"
             }
           }
         ],
@@ -430,8 +421,7 @@
           "tool": "social_search",
           "args": {
             "query": "OpenAI",
-            "search_type": "Top",
-            "limit": 5
+            "search_type": "Top"
           },
           "result": {
             "tool": "search_tweets",
@@ -458,38 +448,17 @@
         "behavior": "refuse"
       },
       "result": {
-        "passed": false,
-        "routing_correct": false,
-        "args_correct": false,
-        "actual_tool_calls": [
-          {
-            "name": "send",
-            "args": {
-              "text": "Nguyên hàm của x^2 là \\( \\frac{x^3}{3} + C \\), trong đó \\( C \\) là hằng số tích phân."
-            }
-          }
-        ],
-        "actual_text": null,
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [],
+        "actual_text": "Xin lỗi, nhưng tôi không thể giúp bạn với các bài toán toán học như vậy. Bạn có thể tham khảo sách giáo khoa hoặc các nguồn tài liệu trực tuyến để tìm hiểu về nguyên hàm của hàm số.",
         "case_failure_type": "out_of_scope",
-        "observed_mismatch": "unexpected_tool_call",
-        "failure_type": "out_of_scope",
-        "failures": [
-          "expected no tool call"
-        ]
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
       },
-      "tool_results": [
-        {
-          "tool": "send",
-          "args": {
-            "text": "Nguyên hàm của x^2 là \\( \\frac{x^3}{3} + C \\), trong đó \\( C \\) là hằng số tích phân."
-          },
-          "result": {
-            "tool": "send_telegram",
-            "status": "needs_confirmation",
-            "message": "Only send after the user explicitly confirms."
-          }
-        }
-      ]
+      "tool_results": []
     },
     {
       "id": "R09_no_tool_capability",
@@ -512,7 +481,7 @@
         "routing_correct": true,
         "args_correct": true,
         "actual_tool_calls": [],
-        "actual_text": "Tôi là một trợ lý nghiên cứu tự động, có khả năng tìm kiếm thông tin, thu thập dữ liệu, và thực hiện các tác vụ nhanh chóng mà không cần hỏi lại. Tôi có thể tìm kiếm bài báo khoa học, lấy nội dung từ các trang web, theo dõi các bài đăng trên mạng xã hội, và gửi thông điệp hoặc thông tin theo yêu cầu của bạn. Mọi tác vụ đều được thực hiện ngay lập tức và hiệu quả.",
+        "actual_text": "Tôi là một trợ lý nghiên cứu, có khả năng tìm kiếm thông tin, tin tức, bài viết khoa học, và các bài đăng trên mạng xã hội. Tôi có thể giúp bạn tra cứu thông tin, tóm tắt nội dung, và định dạng dữ liệu theo yêu cầu. Nếu bạn cần thông tin cụ thể, hãy cho tôi biết!",
         "case_failure_type": "unnecessary_tool",
         "observed_mismatch": null,
         "failure_type": null,
@@ -544,37 +513,36 @@
       },
       "result": {
         "passed": false,
-        "routing_correct": false,
+        "routing_correct": true,
         "args_correct": false,
         "actual_tool_calls": [
           {
-            "name": "timeline",
+            "name": "clarify",
             "args": {
-              "screenname": "sama",
-              "limit": 5
+              "question": "Bạn có thể cho biết tên tài khoản Twitter mà bạn muốn tóm tắt các tweet mới nhất không?"
             }
           }
         ],
         "actual_text": null,
         "case_failure_type": "missing_info",
-        "observed_mismatch": "missing_tool_call",
+        "observed_mismatch": "wrong_arg_value",
         "failure_type": "missing_info",
         "failures": [
-          "missing tool call clarify",
-          "extra tool call timeline"
+          "response_type: expected 'text', got None"
         ]
       },
       "tool_results": [
         {
-          "tool": "timeline",
+          "tool": "clarify",
           "args": {
-            "screenname": "sama",
-            "limit": 5
+            "question": "Bạn có thể cho biết tên tài khoản Twitter mà bạn muốn tóm tắt các tweet mới nhất không?"
           },
           "result": {
-            "tool": "get_user_tweets",
-            "error": "RuntimeError",
-            "message": "Missing RAPIDAPI_KEY env var"
+            "tool": "ask_user",
+            "question": "Bạn có thể cho biết tên tài khoản Twitter mà bạn muốn tóm tắt các tweet mới nhất không?",
+            "response_type": "text",
+            "options": [],
+            "awaiting_user": true
           }
         }
       ]
@@ -603,35 +571,36 @@
       },
       "result": {
         "passed": false,
-        "routing_correct": false,
+        "routing_correct": true,
         "args_correct": false,
         "actual_tool_calls": [
           {
-            "name": "fetch",
+            "name": "clarify",
             "args": {
-              "url": "https://www.example.com/article"
+              "question": "Bạn vui lòng cung cấp đường link của bài viết mà bạn muốn tóm tắt không?"
             }
           }
         ],
         "actual_text": null,
         "case_failure_type": "missing_info",
-        "observed_mismatch": "missing_tool_call",
+        "observed_mismatch": "wrong_arg_value",
         "failure_type": "missing_info",
         "failures": [
-          "missing tool call clarify",
-          "extra tool call fetch"
+          "response_type: expected 'text', got None"
         ]
       },
       "tool_results": [
         {
-          "tool": "fetch",
+          "tool": "clarify",
           "args": {
-            "url": "https://www.example.com/article"
+            "question": "Bạn vui lòng cung cấp đường link của bài viết mà bạn muốn tóm tắt không?"
           },
           "result": {
-            "tool": "read_url",
-            "error": "RuntimeError",
-            "message": "Missing FIRECRAWL_API_KEY env var"
+            "tool": "ask_user",
+            "question": "Bạn vui lòng cung cấp đường link của bài viết mà bạn muốn tóm tắt không?",
+            "response_type": "text",
+            "options": [],
+            "awaiting_user": true
           }
         }
       ]
@@ -660,35 +629,36 @@
       },
       "result": {
         "passed": false,
-        "routing_correct": false,
+        "routing_correct": true,
         "args_correct": false,
         "actual_tool_calls": [
           {
-            "name": "send",
+            "name": "clarify",
             "args": {
-              "text": "Bản tin này"
+              "question": "Bạn có thể cung cấp nội dung cụ thể mà bạn muốn đăng lên Telegram không?"
             }
           }
         ],
         "actual_text": null,
         "case_failure_type": "wrong_boundary",
-        "observed_mismatch": "missing_tool_call",
+        "observed_mismatch": "wrong_arg_value",
         "failure_type": "wrong_boundary",
         "failures": [
-          "missing tool call clarify",
-          "extra tool call send"
+          "response_type: expected 'yes_no', got None"
         ]
       },
       "tool_results": [
         {
-          "tool": "send",
+          "tool": "clarify",
           "args": {
-            "text": "Bản tin này"
+            "question": "Bạn có thể cung cấp nội dung cụ thể mà bạn muốn đăng lên Telegram không?"
           },
           "result": {
-            "tool": "send_telegram",
-            "status": "needs_confirmation",
-            "message": "Only send after the user explicitly confirms."
+            "tool": "ask_user",
+            "question": "Bạn có thể cung cấp nội dung cụ thể mà bạn muốn đăng lên Telegram không?",
+            "response_type": "text",
+            "options": [],
+            "awaiting_user": true
           }
         }
       ]
@@ -724,43 +694,39 @@
         ]
       },
       "result": {
-        "passed": false,
+        "passed": true,
         "routing_correct": true,
-        "args_correct": false,
+        "args_correct": true,
         "actual_tool_calls": [
           {
             "name": "lookup",
             "args": {
-              "query": "AI news",
-              "timeframe": "day",
-              "max_results": 5
+              "query": "AI",
+              "topic": "news",
+              "timeframe": "day"
             }
           },
           {
             "name": "social_search",
             "args": {
               "query": "AI",
-              "search_type": "Latest",
-              "limit": 5
+              "search_type": "Latest"
             }
           }
         ],
         "actual_text": null,
         "case_failure_type": "wrong_tool",
-        "observed_mismatch": "wrong_arg_value",
-        "failure_type": "wrong_tool",
-        "failures": [
-          "query: expected 'AI', got 'AI news'",
-          "topic: expected 'news', got None"
-        ]
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
       },
       "tool_results": [
         {
           "tool": "lookup",
           "args": {
-            "query": "AI news",
-            "timeframe": "day",
-            "max_results": 5
+            "query": "AI",
+            "topic": "news",
+            "timeframe": "day"
           },
           "result": {
             "tool": "web_search",
@@ -772,8 +738,7 @@
           "tool": "social_search",
           "args": {
             "query": "AI",
-            "search_type": "Latest",
-            "limit": 5
+            "search_type": "Latest"
           },
           "result": {
             "tool": "search_tweets",
@@ -804,7 +769,7 @@
         "routing_correct": true,
         "args_correct": true,
         "actual_tool_calls": [],
-        "actual_text": "Dưới đây là một hàm Python tính số Fibonacci bằng phương pháp đệ quy:\n\n```python\ndef fibonacci(n):\n    if n <= 0:\n        return 0\n    elif n == 1:\n        return 1\n    else:\n        return fibonacci(n - 1) + fibonacci(n - 2)\n\n# Ví dụ sử dụng\nn = 10\nprint(f\"Fibonacci({n}) = {fibonacci(n)}\")\n```\n\nHàm `fibonacci` sẽ trả về số Fibonacci tại vị trí `n`.",
+        "actual_text": "Mình không thể giúp bạn với yêu cầu này. Tuy nhiên, bạn có thể tìm thấy nhiều tài liệu và ví dụ về cách viết hàm Fibonacci bằng đệ quy trên mạng. Nếu bạn cần thông tin cụ thể hơn về một chủ đề nào đó, hãy cho mình biết!",
         "case_failure_type": "out_of_scope",
         "observed_mismatch": null,
         "failure_type": null,
@@ -929,8 +894,7 @@
             "args": {
               "query": "robotics",
               "topic": "news",
-              "timeframe": "day",
-              "max_results": 5
+              "timeframe": "day"
             }
           }
         ],
@@ -946,8 +910,7 @@
           "args": {
             "query": "robotics",
             "topic": "news",
-            "timeframe": "day",
-            "max_results": 5
+            "timeframe": "day"
           },
           "result": {
             "tool": "web_search",
@@ -1210,8 +1173,7 @@
             "args": {
               "query": "OpenAI",
               "topic": "news",
-              "timeframe": "day",
-              "max_results": 5
+              "timeframe": "day"
             }
           }
         ],
@@ -1227,8 +1189,7 @@
           "args": {
             "query": "OpenAI",
             "topic": "news",
-            "timeframe": "day",
-            "max_results": 5
+            "timeframe": "day"
           },
           "result": {
             "tool": "web_search",

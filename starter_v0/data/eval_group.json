@@ -285,6 +285,122 @@
         "difficulty": "hard",
         "what_it_tests": "Boundary dương tính: sau khi đã có xác nhận rõ ràng ở lượt trước, agent được phép gọi send với confirmed=true."
       }
+    },
+    {
+      "id": "G11_no_tool_capability_variant",
+      "phase": "B",
+      "query": "Trong workspace này bạn hỗ trợ những việc gì?",
+      "failure_type": "unnecessary_tool",
+      "expect": {
+        "no_tool": true,
+        "behavior": "answer_without_tool"
+      },
+      "metadata": {
+        "skill": "no_tool_meta_variant",
+        "difficulty": "easy",
+        "what_it_tests": "Câu hỏi meta về capability phải được trả lời trực tiếp, không gọi bất kỳ tool nào."
+      }
+    },
+    {
+      "id": "G12_direct_url_fetch_routing",
+      "phase": "B",
+      "query": "Đọc giúp mình nội dung ở link này: https://openai.com/index/gpt-4-1/",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "fetch",
+            "args": {
+              "url": "https://openai.com/index/gpt-4-1/"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "routing_specific_url",
+        "difficulty": "easy",
+        "what_it_tests": "Khi user đã đưa URL cụ thể thì phải dùng fetch, không chuyển sang lookup."
+      }
+    },
+    {
+      "id": "G13_social_top_search_type",
+      "phase": "B",
+      "query": "Cho mình các tweet top về chip AI",
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "social_search",
+            "args": {
+              "query": "chip AI",
+              "search_type": "Top"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "arg_search_type_variant",
+        "difficulty": "medium",
+        "what_it_tests": "Từ khóa 'top' phải map sang search_type=Top, đồng thời giữ đúng query chủ đề."
+      }
+    },
+    {
+      "id": "G14_news_timeframe_month",
+      "phase": "B",
+      "query": "Tin AI regulation trong tháng này",
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "AI regulation",
+              "topic": "news",
+              "timeframe": "month"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "arg_timeframe_month",
+        "difficulty": "medium",
+        "what_it_tests": "Nhận diện đúng timeframe=month và giữ topic=news cho yêu cầu tin tức theo tháng."
+      }
+    },
+    {
+      "id": "G15_multiturn_limit_correction_same_handle",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Lấy 8 tweet mới nhất của Elon Musk"
+        },
+        {
+          "role": "user",
+          "content": "Vẫn của Elon Musk nhé"
+        },
+        {
+          "role": "user",
+          "content": "Đổi còn 2 tweet thôi"
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "elonmusk",
+              "limit": 2
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "multiturn_limit_correction",
+        "difficulty": "hard",
+        "what_it_tests": "Ở multi-turn, agent phải giữ đúng handle đã xác định và áp dụng limit mới nhất từ lượt cuối."
+      }
     }
   ]
 }
