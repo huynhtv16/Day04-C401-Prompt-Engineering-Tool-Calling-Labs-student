@@ -14,7 +14,7 @@
 
 ## A1. Agent này làm được gì
 
-Research agent giúp tìm thông tin nghiên cứu và tin tức từ nhiều nguồn, đọc nội dung web, tổng hợp lại thành văn bản, và gửi kết quả lên Telegram. Agent dùng tool để trả lời các yêu cầu: tìm tweet/trending, tìm tin tức, tra cứu URL, định dạng nội dung, và gửi tin nhắn Telegram ngay lập tức.
+Research agent giúp tìm thông tin nghiên cứu và tin tức và job từ đa nền tảng, đọc nội dung web, tổng hợp lại thành văn bản, và gửi kết quả lên Telegram. Agent dùng tool để trả lời các yêu cầu: tìm tweet/trending, tìm tin tức, tra cứu URL, định dạng nội dung, và gửi tin nhắn Telegram ngay lập tức.
 
 **Link dùng thử (deploy):**
 
